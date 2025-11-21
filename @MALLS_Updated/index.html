@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@MALLS - Africa's finest roots</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/Favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://www.payfast.co.za/static/js/payfast.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <div class="text-3xl font-extrabold text-primary">@MALLS</div>
+        <div class="flex items-center space-x-4 md:space-x-8 text-lg font-semibold text-gray-700">
+            <a href="#roots" class="hover:text-accent transition duration-300">Our Roots</a>
+            <a href="#menu" class="hover:text-accent transition duration-300">Menu</a>
+            <a href="#dine-in" class="hover:text-accent transition duration-300">Dine-In</a>
+            <a href="#takeaway" class="hover:text-accent transition duration-300">Take Away</a>
+            <a href="#loyalty" class="hover:text-accent transition duration-300">Rewards</a>
+            <a href="#contact" class="hover:text-accent transition duration-300">Contact</a>
+
+            <!-- Login/Register Button -->
+            <a href="Login.html" id="loginButton" class="bg-primary text-white font-bold py-2 px-5 rounded-full shadow-md hover:bg-accent hover:shadow-lg transition duration-300">
+                Login / Register
+            </a>
+
+            <!-- Cart Button in Header -->
+            <button id="cartButton" class="bg-secondary text-primary font-bold py-2 px-4 rounded-full shadow-lg hover:shadow-xl transition duration-300 flex items-center gap-2">
+                <span>🛒</span>
+                <span id="cartCount" class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">0</span>
+            </button>
+        </div>
+    </nav>
+  </header>
+
+
+  <section id="hero" class="hero-section">
+  
+  <div class="hero-background"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+    <h1 class="text-6xl sm:text-7xl lg:text-8xl font-black mb-4 tracking-tight">@MALLS</h1>
+
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-light italic mb-8 border-t-2 border-b-2 border-secondary inline-block px-4 py-2">
+      "Africa's finest roots"
+    </h2>
+
+    <a href="#takeaway"
+       class="bg-secondary text-primary font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105 text-xl">
+      Order Take Away Now
+    </a>
+  </div>
+
+</section>
+
+
+<style>
+  /* Optional: fine-tuning the button colors if Tailwind’s color classes differ */
+  .bg-secondary {
+    background-color: #FFD700; /* example gold tone — adjust to your theme */
+  }
+
+  .text-primary {
+    color: #7B3F00; /* example deep earthy tone — adjust to your theme */
+  }
+
+  .hero-pattern {
+    position: relative;
+  }
+
+  /* Ensure hero content fills viewport */
+  section.hero-pattern {
+    min-height: 100vh;
+  }
+
+</style>
+
+
+    <!-- 2. Our Roots Section -->
+<section id="roots" class="py-16 bg-white">
+  <div class="container mx-auto px-4 text-center">
+    <h3 class="text-4xl font-bold mb-4 text-primary">Our Roots, Our Colours</h3>
+    <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+      @MALLS is a celebration of Southern Africa's vibrant heritage. Our cuisine and design are inspired by the warmth, community, and rich cultural tapestry of the Zulu, Sepedi, Xhosa, and Setswana people.
+    </p>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
+      <div class="root-card">
+      <img src="assets/community.png" alt="Community">
+      <p class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-white/80 text-sm font-semibold text-primary px-2 py-1 rounded-full shadow">Community</p>
+      </div>
+      <div class="root-card">
+      <img src="assets/SA tone.png" alt="SA tone">
+      <p class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-white/80 text-sm font-semibold text-primary px-2 py-1 rounded-full shadow">SA tone</p>
+      </div>
+      <div class="root-card">
+      <img src="assets/Chefs Association.png" alt="Chefs Association">
+      <p class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-white/80 text-sm font-semibold text-primary px-2 py-1 rounded-full shadow">Chef</p>
+      </div>
+      <div class="root-card">
+      <img src="assets/Lekotla.png" alt="Lekgotla">
+      <p class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-white/80 text-sm font-semibold text-primary px-2 py-1 rounded-full shadow">Lekgotla</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Grid card styling */
+#roots .grid {
+  display: grid;
+  gap: 2rem; /* comfortable spacing */
+  /* allow each card to be at least 260px and grow to fill row; wraps automatically */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: start;
+  justify-items: center;
+  max-width: 1200px; /* keeps overall section from stretching too wide */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Square card using aspect-ratio (better than padding-top hack) */
+.root-card {
+  width: 100%;
+  aspect-ratio: 1 / 1;          /* ensures perfect squares */
+  max-width: 340px;             /* prevents single card from becoming too huge */
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(11,22,38,0.08);
+  background: #f7fafc;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: block;
+}
+
+/* Make the image fill the whole square and align with edges */
+.root-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 1rem; /* match card radius for clean edge */
+  transition: transform 0.45s cubic-bezier(.2,.9,.2,1);
+  will-change: transform;
+}
+
+/* Hover */
+.root-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 36px rgba(11,22,38,0.14);
+}
+.root-card:hover img {
+  transform: scale(1.06);
+}
+
+/* Title badge (optional) — remove if you don't want labels covering images */
+.root-card[data-title]::after {
+  content: attr(data-title);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1rem;
+  background: rgba(255,255,255,0.9);
+  color: #7B3F00;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  pointer-events: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+/* Small screens: slightly smaller min width */
+@media (max-width: 640px) {
+  #roots .grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .root-card { max-width: 260px; }
+}
+
+</style>
+
+
+
+
+    <!-- Separator -->
+    <div class="bg-gray-200 h-2 w-full">
+        <div class="h-full bg-gradient-to-r from-primary via-secondary to-accent animate-pulse"></div>
+    </div>
+
+    <!-- 3. Enhanced Menu Preview with Cart Functionality -->
+<section id="menu" class="py-16 color-primary bg-opacity-90 text-white">
+    <div class="container mx-auto px-4 text-center">
+        <h3 class="text-4xl font-bold mb-4 text-secondary">The Feast: Our Culinary Lineage</h3>
+        <p class="text-xl text-gray-300 mb-12 max-w-4xl mx-auto">
+            From hearty traditional stews to modern interpretations of street food, our menu is a journey across the Southern African palate.
+        </p>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Bobotie -->
+            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+                <div class="relative">
+                    <img src="assets/Bobotjie.jpg" alt="Bobotie" class="w-full h-48 object-cover rounded-lg mb-3">
+                    <span class="absolute top-2 right-2 bg-accent text-white px-3 py-1 rounded-full text-sm font-bold">Popular</span>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 text-primary">Bobotie's Comfort</h4>
+                <p class="text-gray-600 mb-3 text-sm">A classic Cape Malay dish—spiced minced meat baked with an egg-based topping, served with yellow rice and chutney.</p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-2xl font-bold text-primary">R95.00</span>
+                    <span class="text-sm text-gray-500">⏱️ 25 min</span>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showDetails('bobotie')" class="flex-1 bg-gray-200 text-primary font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">
+                        View Details
+                    </button>
+                    <button onclick="addToCart('Bobotie\'s Comfort', 95)" class="flex-1 bg-[#7B3F00] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#5e2e00] transition">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Braai Platter -->
+            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+                <div class="relative">
+                    <img src="assets/The Ancestral Braai.jpg" alt="Braai Platter" class="w-full h-48 object-cover rounded-lg mb-3">
+                    <span class="absolute top-2 right-2 bg-secondary text-primary px-3 py-1 rounded-full text-sm font-bold">Sharing</span>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 text-primary">The Ancestral Braai</h4>
+                <p class="text-gray-600 mb-3 text-sm">A grand sharing platter featuring premium cuts of beef, lamb chops, boerewors, and pork ribs with chakalaka and pap.</p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-2xl font-bold text-primary">R280.00</span>
+                    <span class="text-sm text-gray-500">👥 2-4 people</span>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showDetails('braai')" class="flex-1 bg-gray-200 text-primary font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">
+                        View Details
+                    </button>
+                    <button onclick="addToCart('The Ancestral Braai', 280)" class="flex-1 bg-[#7B3F00] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#5e2e00] transition">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kota & Bunny Bites -->
+            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+                <div class="relative">
+                    <img src="assets/Kota or Bunny chow.jpg" alt="Kota & Bunny" class="w-full h-48 object-cover rounded-lg mb-3">
+                    <span class="absolute top-2 right-2 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold">Street Food</span>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 text-primary">Kota & Bunny Bites</h4>
+                <p class="text-gray-600 mb-3 text-sm">Mini versions of Durban Bunny Chow and Soweto Kota, filled with curry, chips, cheese, and your choice of chicken or beef.</p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-2xl font-bold text-primary">R75.00</span>
+                    <span class="text-sm text-gray-500">🌶️ Spicy</span>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showDetails('kota')" class="flex-1 bg-gray-200 text-primary font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">
+                        View Details
+                    </button>
+                    <button onclick="addToCart('Kota & Bunny Bites', 75)" class="flex-1 bg-[#7B3F00] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#5e2e00] transition">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Potjiekos -->
+            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+                <div class="relative">
+                    <img src="assets/Potjikos.jpg" alt="Potjiekos" class="w-full h-48 object-cover rounded-lg mb-3">
+                    <span class="absolute top-2 right-2 bg-accent text-white px-3 py-1 rounded-full text-sm font-bold">Traditional</span>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 text-primary">Traditional Potjiekos</h4>
+                <p class="text-gray-600 mb-3 text-sm">Slow-cooked three-legged pot stew with tender lamb, vegetables, and aromatic spices. Served with rice or bread.</p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-2xl font-bold text-primary">R110.00</span>
+                    <span class="text-sm text-gray-500">⏱️ 35 min</span>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showDetails('potjiekos')" class="flex-1 bg-gray-200 text-primary font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">
+                        View Details
+                    </button>
+                    <button onclick="addToCart('Traditional Potjiekos', 110)" class="flex-1 bg-[#7B3F00] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#5e2e00] transition">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Malva Pudding -->
+            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+                <div class="relative">
+                    <img src="assets/Malva pudding.jpg" alt="Malva Pudding" class="w-full h-48 object-cover rounded-lg mb-3">
+                    <span class="absolute top-2 right-2 bg-secondary text-primary px-3 py-1 rounded-full text-sm font-bold">Dessert</span>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 text-primary">Malva Pudding Perfection</h4>
+                <p class="text-gray-600 mb-3 text-sm">A sweet, spongy apricot dessert drenched in hot cream sauce. Served with vanilla ice cream or custard.</p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-2xl font-bold text-primary">R55.00</span>
+                    <span class="text-sm text-gray-500">🍰 Sweet</span>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showDetails('malva')" class="flex-1 bg-gray-200 text-primary font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">
+                        View Details
+                    </button>
+                    <button onclick="addToCart('Malva Pudding Perfection', 55)" class="flex-1 bg-[#7B3F00] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#5e2e00] transition">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mala and Mogudu -->
+            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+                <div class="relative">
+                    <img src="assets/Mala & Mogodu.jpg" alt="Mala and Mogudu" class="w-full h-48 object-cover rounded-lg mb-3">
+                    <span class="absolute top-2 right-2 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold">Authentic</span>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 text-primary">Mala and Mogudu</h4>
+                <p class="text-gray-600 mb-3 text-sm">Slow-cooked tender tripe and trotters in rich tomato and onion gravy. A beloved traditional African delicacy served with pap.</p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-2xl font-bold text-primary">R120.00</span>
+                    <span class="text-sm text-gray-500">⏱️ 30 min</span>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showDetails('mala')" class="flex-1 bg-gray-200 text-primary font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">
+                        View Details
+                    </button>
+                    <button onclick="addToCart('Mala and Mogudu', 120)" class="flex-1 bg-[#7B3F00] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#5e2e00] transition">
+                        Order Now
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+<a href="menu.html" class="mt-12 text-white bg-accent font-bold py-3 px-8 rounded-full shadow-lg hover:bg-primary transition duration-300 text-lg inline-block"> See Our Full Menu </a>
+    </div>
+</section>
+
+
+<!-- Product Details Modal -->
+<div id="detailsModal" class="fixed inset-0 bg-black bg-opacity-70 z-[100] hidden flex items-center justify-center" onclick="hideDetails()">
+    <div class="bg-white rounded-xl max-w-2xl w-11/12 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+        <div class="p-8">
+            <div class="flex justify-between items-start mb-4">
+                <h3 id="detailTitle" class="text-3xl font-bold text-primary"></h3>
+                <button onclick="hideDetails()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <img id="detailImage" src="" alt="" class="w-full h-64 object-cover rounded-lg mb-4">
+            <p id="detailDescription" class="text-gray-700 text-lg mb-4"></p>
+            <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                <h4 class="font-bold text-primary mb-2">Ingredients:</h4>
+                <p id="detailIngredients" class="text-gray-600"></p>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                <h4 class="font-bold text-primary mb-2">Allergen Information:</h4>
+                <p id="detailAllergens" class="text-gray-600"></p>
+            </div>
+            <div class="flex justify-between items-center">
+                <span id="detailPrice" class="text-3xl font-bold text-primary"></span>
+                <button id="detailAddToCart" class="bg-accent text-white font-bold py-3 px-8 rounded-lg hover:bg-primary transition">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cart Modal -->
+<div id="cartModal" class="fixed inset-0 bg-black bg-opacity-70 z-[100] hidden flex items-center justify-center" onclick="hideCart()">
+    <div class="bg-white rounded-xl max-w-lg w-11/12 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+        <div class="p-8">
+            <div class="flex justify-between items-start mb-6">
+                <h3 class="text-3xl font-bold text-primary">Your Cart</h3>
+                <button onclick="hideCart()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <div id="cartItems" class="space-y-4 mb-6">
+                <!-- Cart items will be inserted here -->
+            </div>
+            <div class="border-t pt-4">
+                <div class="flex justify-between items-center text-xl font-bold mb-4">
+                    <span>Total:</span>
+                    <span id="cartTotal" class="text-primary">R0.00</span>
+                </div>
+                <button onclick="proceedToCheckout()" class="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-primary transition">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Cart functionality
+let cart = [];
+
+const dishDetails = {
+    bobotie: {
+        title: "Bobotie's Comfort",
+        image: "assets/Bobotjie.jpg",
+        description: "Bobotie is South Africa's national dish, a Cape Malay masterpiece that combines sweet and savory flavors. Our version features premium minced beef and lamb, perfectly spiced with curry, turmeric, and a hint of apricot jam. Topped with a golden egg custard and baked to perfection. Served with fragrant yellow rice studded with raisins, sambals, and Mrs. Ball's chutney.",
+        ingredients: "Minced beef & lamb, eggs, bread, curry powder, turmeric, bay leaves, apricot jam, onions, garlic, almonds, yellow rice, raisins",
+        allergens: "Contains: Gluten, Eggs, Dairy, Tree Nuts. May contain traces of peanuts.",
+        price: 95
+    },
+    braai: {
+        title: "The Ancestral Braai",
+        image: "assets/The Ancestral Braai.jpg",
+        description: "Experience the heart of South African culture with our ultimate braai platter. This feast includes succulent lamb chops, tender beef steaks, spicy boerewors, and sticky pork ribs - all grilled over open flames. Accompanied by creamy pap, spicy chakalaka, tomato and onion relish, and a fresh garden salad. Perfect for sharing with family and friends!",
+        ingredients: "Lamb chops, beef steaks, boerewors, pork ribs, maize meal (pap), tomatoes, beans, onions, peppers, spices, fresh vegetables",
+        allergens: "Contains: Gluten. May contain traces of soy and mustard.",
+        price: 280
+    },
+    kota: {
+        title: "Kota & Bunny Bites",
+        image: "assets/Kota or Bunny chow.jpg",
+        description: "A township favorite reimagined! Sample both iconic street foods in one plate. Our Kota features a quarter loaf filled with hot chips, cheese, Russian sausage, and your choice of grilled chicken or beef patty. The Bunny Chow offers hollowed-out bread filled with aromatic curry. Both come with atchar and chakalaka on the side.",
+        ingredients: "Bread loaf, chips, cheese, Russian sausage, chicken/beef, curry spices, tomatoes, beans, chili, atchar",
+        allergens: "Contains: Gluten, Dairy. May contain eggs and soy.",
+        price: 75
+    },
+    potjiekos: {
+        title: "Traditional Potjiekos",
+        image: "assets/Potjikos.jpg",
+        description: "A time-honored South African tradition! Our potjiekos is slow-cooked for hours in a cast-iron three-legged pot over coals. Tender lamb pieces layered with potatoes, carrots, onions, and seasonal vegetables, simmered in a rich tomato and wine-based sauce. The slow cooking process creates incredible depth of flavor. Served with your choice of rice, bread, or pap.",
+        ingredients: "Lamb, potatoes, carrots, onions, tomatoes, garlic, wine, bay leaves, thyme, seasonal vegetables",
+        allergens: "Contains: Sulfites (wine). Gluten-free option available.",
+        price: 110
+    },
+    malva: {
+        title: "Malva Pudding Perfection",
+        image: "assets/Malva pudding.jpg",
+        description: "The ultimate South African comfort dessert! This warm, spongy pudding is infused with apricot jam and baked until golden. While still hot, it's drenched in a luxurious cream and butter sauce that soaks into every bite. Served with a generous scoop of vanilla ice cream or traditional custard. One bite and you'll understand why this dessert is beloved across the nation!",
+        ingredients: "Flour, sugar, eggs, apricot jam, butter, cream, milk, vanilla, baking soda, vinegar",
+        allergens: "Contains: Gluten, Eggs, Dairy. Not suitable for vegans.",
+        price: 55
+    },
+    mala: {
+        title: "Mala and Mogudu (Tripe)",
+        image: "assets/Mala & Mogodu.jpg",
+        description: "An authentic African delicacy for the adventurous! Tender beef tripe (mogodu) and trotters (mala) are meticulously cleaned and slow-cooked for hours until melt-in-your-mouth tender. Simmered in a rich tomato, onion, and spice gravy that's both comforting and deeply flavorful. This traditional dish connects you to generations of African culinary heritage. Served with steaming hot pap.",
+        ingredients: "Beef tripe, trotters, onions, tomatoes, garlic, ginger, curry powder, bay leaves, beef stock, maize meal (pap)",
+        allergens: "Gluten-free. May contain traces of celery.",
+        price: 120
+    }
+};
+
+function addToCart(itemName, price) {
+    const existingItem = cart.find(item => item.name === itemName);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({ name: itemName, price: price, quantity: 1 });
+    }
+    updateCart();
+    showToast(`${itemName} added to cart!`);
+}
+
+function updateCart() {
+    const cartCount = document.getElementById('cartCount');
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+}
+
+function showDetails(dishId) {
+    const dish = dishDetails[dishId];
+    document.getElementById('detailTitle').textContent = dish.title;
+    document.getElementById('detailImage').src = dish.image;
+    document.getElementById('detailDescription').textContent = dish.description;
+    document.getElementById('detailIngredients').textContent = dish.ingredients;
+    document.getElementById('detailAllergens').textContent = dish.allergens;
+    document.getElementById('detailPrice').textContent = `R${dish.price.toFixed(2)}`;
+    
+    const addButton = document.getElementById('detailAddToCart');
+    addButton.onclick = () => {
+        addToCart(dish.title, dish.price);
+        hideDetails();
+    };
+    
+    document.getElementById('detailsModal').classList.remove('hidden');
+}
+
+function hideDetails() {
+    document.getElementById('detailsModal').classList.add('hidden');
+}
+
+function showCart() {
+    const cartItemsDiv = document.getElementById('cartItems');
+    if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty</p>';
+    } else {
+        cartItemsDiv.innerHTML = cart.map(item => `
+            <div class="flex justify-between items-center bg-gray-50 p-4 rounded-lg">
+                <div>
+                    <h4 class="font-bold text-primary">${item.name}</h4>
+                    <p class="text-gray-600">R${item.price.toFixed(2)} x ${item.quantity}</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="changeQuantity('${item.name}', -1)" class="bg-gray-300 w-8 h-8 rounded-full hover:bg-gray-400">-</button>
+                    <span class="font-bold">${item.quantity}</span>
+                    <button onclick="changeQuantity('${item.name}', 1)" class="bg-gray-300 w-8 h-8 rounded-full hover:bg-gray-400">+</button>
+                    <button onclick="removeFromCart('${item.name}')" class="text-red-500 hover:text-red-700 ml-2">🗑️</button>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    document.getElementById('cartTotal').textContent = `R${total.toFixed(2)}`;
+    document.getElementById('cartModal').classList.remove('hidden');
+}
+
+function hideCart() {
+    document.getElementById('cartModal').classList.add('hidden');
+}
+
+function changeQuantity(itemName, change) {
+    const item = cart.find(i => i.name === itemName);
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            removeFromCart(itemName);
+        } else {
+            updateCart();
+            showCart();
+        }
+    }
+}
+
+function removeFromCart(itemName) {
+    cart = cart.filter(item => item.name !== itemName);
+    updateCart();
+    showCart();
+}
+
+function proceedToCheckout() {
+    if (cart.length === 0) {
+        showToast('Your cart is empty!');
+        return;
+    }
+    hideCart();
+    // Scroll to takeaway section
+    document.getElementById('takeaway').scrollIntoView({ behavior: 'smooth' });
+    showToast('Please complete the order form below');
+}
+
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'fixed bottom-8 right-8 bg-secondary text-primary font-bold py-3 px-6 rounded-lg shadow-xl z-[150] animate-bounce';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+// Cart button click handler
+document.getElementById('cartButton')?.addEventListener('click', showCart);
+</script>
+
+<style>
+.animate-bounce {
+    animation: bounce 0.5s ease-in-out;
+}
+
+
+
+</style>
+
+</section>
+
+
+    <!-- 5. Dine-In Booking Form -->
+    <section id="dine-in" class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-2xl">
+            <h3 class="text-4xl font-bold mb-4 text-primary text-center">Secure Your Dine-In Spot</h3>
+            <p class="text-xl text-gray-600 mb-8 text-center">Reserve your table for a full cultural dining experience.</p>
+            <div class="bg-white p-8 rounded-xl shadow-2xl border-t-8 border-accent">
+                <form id="dineInForm" class="space-y-6">
+                    <div>
+                        <label for="dine_name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                        <input type="text" id="dine_name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-accent focus:border-accent">
+                    </div>
+                    <div>
+                        <label for="dine_guests" class="block text-sm font-medium text-gray-700">Number of Guests</label>
+                        <select id="dine_guests" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-accent focus:border-accent">
+                            <option value="">Select party size</option>
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="6">6 Guests</option>
+                            <option value="8+">8+ Guests (Call to confirm)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="dine_date" class="block text-sm font-medium text-gray-700">Date & Time</label>
+                        <input type="datetime-local" id="dine_date" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-accent focus:border-accent">
+                    </div>
+                    <button type="submit" class="w-full color-accent text-white font-bold py-3 rounded-md shadow-lg hover:color-primary transition duration-300 transform hover:scale-[1.01]">
+                        Confirm Dine-In Booking
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Take Away Form -->
+    <section id="takeaway" class="py-16 color-primary bg-opacity-90 text-white">
+        <div class="container mx-auto px-4 max-w-2xl">
+            <h3 class="text-4xl font-bold mb-4 text-secondary text-center">Place Your Take Away Order</h3>
+            <p class="text-xl text-gray-200 mb-8 text-center">Order your favorite African roots dishes for collection.</p>
+            <div class="bg-white p-8 rounded-xl shadow-2xl border-t-8 border-secondary text-gray-800">
+                <form id="takeawayForm" class="space-y-6">
+                    <h4 class="text-2xl font-semibold text-primary pb-2 border-b">Your Details</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" id="order_name" placeholder="Your Name" required class="border border-gray-300 rounded px-4 py-3">
+                        <input type="tel" id="order_phone" placeholder="Phone Number" required class="border border-gray-300 rounded px-4 py-3">
+                    </div>
+                    <h4 class="text-2xl font-semibold text-primary pt-4 pb-2 border-b">Your Order</h4>
+                    <input type="text" id="order_name" placeholder="Order here" required class="border border-gray-300 rounded px-4 py-3 text-gray-400" disabled>
+                    <details class="border border-gray-300 rounded-lg overflow-hidden">
+                        <summary class="bg-primary text-white px-6 py-4 font-semibold flex justify-between items-center">
+                            Select Your Dishes
+                            <svg class="chevron w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <div class="bg-gray-50 p-6 space-y-4">
+                            <details class="border border-gray-200 rounded-lg">
+                                <summary class="bg-secondary text-primary px-4 py-3 font-medium flex justify-between items-center">
+                                    Bobotie's Comfort (R95.00)
+                                    <svg class="chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </summary>
+                                <div class="p-4 bg-white flex items-center gap-4">
+                                    <img src="assets/Bobotjie.jpg" alt="Bobotie" class="rounded float-start w-20 h-20 object-cover">
+                                    <select id="qty_bobotie" class="border border-gray-300 rounded px-3 py-2">
+                                        <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">more</option>
+                                    </select>
+                                </div>
+                            </details>
+                            <details class="border border-gray-200 rounded-lg">
+                                <summary class="bg-secondary text-primary px-4 py-3 font-medium flex justify-between items-center">
+                                    The Ancestral Braai (R280.00)
+                                    <svg class="chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </summary>
+                                <div class="p-4 bg-white flex items-center gap-4">
+                                    <img src="assets/The Ancestral Braai.jpg" alt="Braai" class="rounded float-start w-20 h-20 object-cover">
+                                    <select id="qty_braai" class="border border-gray-300 rounded px-3 py-2">
+                                        <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">more</option>
+                                    </select>
+                                </div>
+                            </details>
+                            <details class="border border-gray-200 rounded-lg">
+                                <summary class="bg-secondary text-primary px-4 py-3 font-medium flex justify-between items-center">
+                                    Kota & Bunny Bites (R75.00)
+                                    <svg class="chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </summary>
+                                <div class="p-4 bg-white flex items-center gap-4">
+                                    <img src="assets/Kota or Bunny chow.jpg" alt="Kota" class="rounded float-start w-20 h-20 object-cover">
+                                    <select id="qty_kota" class="border border-gray-300 rounded px-3 py-2">
+                                        <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">more</option>
+                                    </select>
+                                </div>
+                            </details>
+                            <details class="border border-gray-200 rounded-lg">
+                                <summary class="bg-secondary text-primary px-4 py-3 font-medium flex justify-between items-center">
+                                    Traditional Potjiekos (R110.00)
+                                    <svg class="chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </summary>
+                                <div class="p-4 bg-white flex items-center gap-4">
+                                    <img src="assets/Potjikos.jpg" alt="Potjiekos" class="rounded float-start w-20 h-20 object-cover">
+                                    <select id="qty_potjiekos" class="border border-gray-300 rounded px-3 py-2">
+                                        <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">more</option>
+                                    </select>
+                                </div>
+                            </details>
+                            <details class="border border-gray-200 rounded-lg">
+                                <summary class="bg-secondary text-primary px-4 py-3 font-medium flex justify-between items-center">
+                                    Malva Pudding Perfection (R55.00)
+                                    <svg class="chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </summary>
+                                <div class="p-4 bg-white flex items-center gap-4">
+                                    <img src="assets/Malva pudding.jpg" alt="Malva" class="rounded float-start w-20 h-20 object-cover">
+                                    <select id="qty_malva" class="border border-gray-300 rounded px-3 py-2">
+                                        <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">more</option>
+                                    </select>
+                                </div>
+                            </details>
+                            <details class="border border-gray-200 rounded-lg">
+                                <summary class="bg-secondary text-primary px-4 py-3 font-medium flex justify-between items-center">
+                                    Mala and Mogudu (Tripe) (R120.00)
+                                    <svg class="chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </summary>
+                                <div class="p-4 bg-white flex items-center gap-4">
+                                    <img src="assets/Mala & Mogodu.jpg" alt="Tripe" class="rounded float-start w-20 h-20 object-cover">
+                                    <select id="qty_mala" class="border border-gray-300 rounded px-3 py-2">
+                                        <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">more</option>
+                                    </select>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+                    <button type="submit" class="w-full color-accent text-white font-bold py-4 rounded hover:bg-[#a03300] transition mt-6">
+                        Place Order
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+        <!-- 4. Loyalty Program Section -->
+    <section id="loyalty" class="py-16 bg-white">
+        <div class="container mx-auto px-4 flex justify-center">
+            <div class="loyalty-card bg-white w-full max-w-lg rounded-xl overflow-hidden border-t-8 border-accent">
+                <div class="p-6 md:p-8">
+                    <h1 class="text-3xl font-bold text-primary mb-2">Customer Rewards & Loyalty</h1>
+                    <p class="text-sm text-gray-600 mb-6">Join our @MALLS Loyalty Program! Earn points every time you order or dine-in.</p>
+
+                    <!-- Notification Area -->
+                    <div id="notification-area" class="mb-4 hidden p-3 rounded-lg text-sm transition-all duration-300"></div>
+
+                    <!-- Loyalty Form & Join Section -->
+                    <div id="join-section">
+                        <div class="mb-4">
+                            <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" id="fullName" class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent" placeholder="e.g. @MALLS">
+                        </div>
+                        <div class="mb-4">
+                            <label for="emailAddress" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="emailAddress" class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent" placeholder="e.g. malls@malls.co.za">
+                        </div>
+                        <div class="mb-6">
+                            <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" id="phoneNumber" class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent" placeholder="e.g. 1234567890">
+                        </div>
+
+                        <button id="joinLoyaltyProgramBtn" class="w-full color-accent text-white font-semibold py-3 px-4 rounded-lg transition duration-150 transform hover:scale-[1.01] hover:color-primary shadow-lg">
+                            Join Loyalty Program
+                        </button>
+                    </div>
+                    
+                    <!-- Rewards and Redemption Section -->
+                    <div id="rewards-section" class="mt-6 pt-6 border-t border-gray-200 bg-gray-50 rounded-lg p-4">
+                        <h2 id="welcome-message" class="text-xl font-bold text-primary mb-3">Welcome, !</h2>
+                        
+                        <p class="text-gray-700 mb-4">You currently have <span id="currentPoints" class="text-xl font-extrabold text-accent">0</span> points.</p>
+                        
+                        <div class="p-3 bg-secondary bg-opacity-20 border-l-4 border-secondary rounded-md mb-4">
+                            <p class="text-sm text-gray-800">Redeem <strong>100 points</strong> for <strong>R50 off</strong> your next meal.</p>
+                        </div>
+
+                        <button id="redeemPointsBtn" class="w-full sm:w-auto color-secondary text-primary font-semibold py-3 px-6 rounded-lg transition duration-150 transform hover:scale-[1.01] hover:color-accent hover:text-white disabled:bg-gray-400 disabled:cursor-not-allowed shadow-lg">
+                            Redeem 100 points
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- 8. Contact Section -->
+<section id="contact" class="py-16 bg-white">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <h3 class="text-4xl font-bold mb-12 text-primary">Reach Out & Connect</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div class="bg-gray-50 p-8 rounded-xl shadow-md border-t-4 border-accent text-center hover:shadow-lg transition">
+        <span class="text-4xl mb-4 text-accent">Location</span>
+        <h4 class="text-xl font-bold mb-2 text-primary">Location:</h4>
+        <address class="not-italic text-gray-500">
+          140 Street, Avenue<br>Bramley view<br>Johannesburg, 2000<br>South Africa
+        </address>
+      </div>
+      <div class="bg-gray-50 p-8 rounded-xl shadow-md border-t-4 border-accent text-center hover:shadow-lg transition">
+        <span class="text-4xl mb-4 text-accent">Phone</span>
+        <h4 class="text-xl font-bold mb-2 text-primary">Phone:</h4>
+        <p class="text-gray-700 font-semibold text-lg"><a href="tel:+27111234567">+27 11 123 4567</a></p>
+        <br>
+        <h4 class="text-xl font-bold mb-2 text-primary">WhatsApp:</h4>
+        <p class="text-gray-700 font-semibold text-lg"><a href="https://wa.me/+27812345678">+27 81 234 4567</a></p>
+      </div>
+      <div class="bg-gray-50 p-8 rounded-xl shadow-md border-t-4 border-accent text-center hover:shadow-lg transition">
+        <span class="text-4xl mb-4 text-accent">Email</span>
+        <h4 class="text-xl font-bold mb-2 text-primary">Email:</h4>
+        <a href="mailto:info@malls.co.za" class="text-gray-500 hover:text-primary font-semibold text-lg">info@malls.co.za</a>
+        <br>
+        <br>
+        <span class="text-4xl mb-4 text-accent">Website:</span>
+        <a href="https://www.malls.co.za" class="text-gray-700 hover:text-primary font-semibold text-lg">www.malls.co.za</a>
+      </div>
+      <div class="bg-gray-50 p-8 rounded-xl shadow-md border-t-4 border-accent text-center hover:shadow-lg transition">
+        <span class="text-4xl mb-4 text-primary">Hours</span>
+          <h4 class="text-2xl font-bold mb-4 text-primary">Operating Hours:</h4>
+          <div class="text-gray-700 text-lg space-y-1">
+            <p><span class="font-semibold w-24 inline-block text-left">Mon-Thu:</span> 11:00 AM - 10:00 PM</p>
+            <p><span class="font-semibold w-24 inline-block text-left">Fri-Sat:</span> 11:00 AM - 11:00 PM</p>
+            <p><span class="font-semibold w-24 inline-block text-left">Sun:</span> 12:00 PM - 9:00 PM</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="map-section" class="map-section">
+  <div class="map-wrapper">
+    <h2 class="map-heading">Find Us</h2>
+
+    <div class="map-card">
+      <iframe 
+        class="map-iframe"
+        src="https://maps.google.com/maps?q=-29.8587,31.0218&z=15&output=embed"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Message Modals -->
+<div id="confirmationMessage" class="message-box fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-[100] hidden opacity-0" onclick="hideMessage()">
+    <div class="color-secondary text-primary p-8 rounded-lg shadow-2xl max-w-md w-11/12 text-center transform scale-95" onclick="event.stopPropagation()">
+        <h4 id="confirmationTitle" class="text-3xl font-bold mb-4"></h4>
+        <p id="confirmationText" class="text-xl mb-6"></p>
+        <button onclick="hideMessage()" class="bg-primary text-white font-bold py-2 px-6 rounded-full hover:bg-black transition duration-300">Close</button>
+    </div>
+</div>
+
+<div id="generalMessage" class="message-box fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-[100] hidden opacity-0" onclick="hideMessage()">
+    <div class="color-secondary text-primary p-8 rounded-lg shadow-2xl max-w-md w-11/12 text-center transform scale-95" onclick="event.stopPropagation()">
+        <h4 class="text-3xl font-bold mb-4">Information!</h4>
+        <p id="generalMessageText" class="text-xl mb-6"></p>
+        <button onclick="hideMessage()" class="bg-primary text-white font-bold py-2 px-6 rounded-full hover:bg-black transition duration-300">Close</button>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <footer class="color-primary text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="text-2xl font-extrabold mb-2">@MALLS</div>
+            <p class="text-gray-300 mb-4">&copy; 2025. All Rights Reserved. | Inspired by the richness of African heritage.</p>
+            <div class="flex justify-center space-x-6 text-xl">
+                <a href="#" class="hover:text-secondary transition">Facebook</a>
+                <a href="#" class="hover:text-secondary transition">Instagram</a>
+                <a href="#contact" class="hover:text-secondary transition">Find Us</a>
+            </div>
+        </footer>
+
+    <!-- Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
+</body>
+</html>

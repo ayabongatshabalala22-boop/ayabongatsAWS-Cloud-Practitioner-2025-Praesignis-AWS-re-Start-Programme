@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - @MALLS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #7B3F00;
+      --accent: #C04000;
+      --secondary: #FFC000;
+      --header-height: 84px;
+      --container-max: 1200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      min-height: 100vh;
+      padding-top: calc(var(--header-height) + 30px);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-inner {
+      max-width: var(--container-max);
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 24px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: #1f2937;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-controls {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+    }
+
+    #loginButton {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(123, 63, 0, 0.18);
+      cursor: pointer;
+    }
+
+    #loginButton:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    #cartButton {
+      background: var(--secondary);
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 9999px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(255, 192, 0, 0.18);
+    }
+
+    #cartCount {
+      background: var(--primary);
+      color: #fff;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+
+    /* ===== LOGIN FORM ===== */
+    .login-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      background: #fff;
+    }
+
+    .login-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      padding: 38px 36px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .login-header h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .login-body {
+      padding: 30px 36px 44px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group label {
+      display: block;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 2px solid #e6e6e6;
+      background: #f6f9ff;
+      font-size: 1rem;
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(123, 63, 0, 0.22);
+      transition: all 0.3s ease;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(123, 63, 0, 0.3);
+    }
+
+    .login-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .divider {
+      text-align: center;
+      margin: 28px 0;
+      color: #999;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 36%;
+      height: 1px;
+      background: #eee;
+    }
+
+    .divider::before { left: 0; }
+    .divider::after { right: 0; }
+
+    /* Message Alert */
+    .message-alert {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+      animation: slideDown 0.3s ease;
+    }
+
+    .message-alert.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .message-alert.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive layout */
+    @media (max-width: 900px) {
+      .nav-inner {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .nav-links {
+        grid-column: 1 / -1;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .nav-controls {
+        justify-content: flex-end;
+      }
+
+      body {
+        padding-top: calc(var(--header-height) + 20px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="logo">@MALLS</div>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#roots">Our Roots</a>
+        <a href="index.html#menu">Menu</a>
+        <a href="index.html#dinein">Dine-In</a>
+        <a href="index.html#takeaway">Take Away</a>
+        <a href="index.html#rewards">Rewards</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <div class="nav-controls">
+        <button id="loginButton" onclick="window.location.href='login.html'">Login / Register</button>
+        <button id="cartButton" aria-label="Cart">
+          <span>🛒</span>
+          <span id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="login-wrapper">
+    <section class="login-container">
+      <div class="login-header">
+        <h1>Welcome Back!</h1>
+        <p>Please login to your account</p>
+      </div>
+      <div class="login-body">
+        <div id="messageAlert" class="message-alert"></div>
+        
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input id="email" type="email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" placeholder="Enter your password" required>
+          </div>
+
+          <div class="form-options">
+            <label style="display:flex;align-items:center;gap:8px;">
+              <input type="checkbox" id="rememberMe" style="width:18px;height:18px;accent-color:var(--primary);">
+              <span style="font-weight:600;color:#666;">Remember me</span>
+            </label>
+
+            <a href="#" id="forgotPassword" style="color:var(--accent);font-weight:700;text-decoration:none;">Forgot Password?</a>
+          </div>
+
+          <button class="login-btn" type="submit" id="loginBtn">Login</button>
+        </form>
+
+        <div class="divider">or continue with</div>
+        <div style="text-align:center;color:#666;">
+          Don't have an account?
+          <a href="register.html" style="color:var(--accent);font-weight:700;">Register Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+  <!-- Firebase Configuration -->
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyDnzQeMpEPp6AIpqdKKcqS6YTnyeeLQXtU",
+    authDomain: "restaurant-website-b4f1a.firebaseapp.com",
+    projectId: "restaurant-website-b4f1a",
+    storageBucket: "restaurant-website-b4f1a.firebasestorage.app",
+    messagingSenderId: "969529154238",
+    appId: "1:969529154238:web:bfdff4205e152a41845cef"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Show message function
+    function showMessage(message, type) {
+      const messageAlert = document.getElementById('messageAlert');
+      messageAlert.textContent = message;
+      messageAlert.className = `message-alert ${type}`;
+      messageAlert.style.display = 'block';
+      
+      setTimeout(() => {
+        messageAlert.style.display = 'none';
+      }, 5000);
+    }
+
+    // Login form submission
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const loginBtn = document.getElementById('loginBtn');
+      
+      // Disable button during login
+      loginBtn.disabled = true;
+      loginBtn.textContent = 'Logging in...';
+      
+      try {
+        const userCredential = await auth.signInWithEmailAndPassword(email, password);
+        showMessage('Login successful! Redirecting...', 'success');
+        
+        // Redirect to home page after successful login
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1500);
+        
+      } catch (error) {
+        let errorMessage = 'Login failed. Please try again.';
+        
+        // Handle specific error cases
+        switch (error.code) {
+          case 'auth/user-not-found':
+            errorMessage = 'No account found with this email.';
+            break;
+          case 'auth/wrong-password':
+            errorMessage = 'Incorrect password. Please try again.';
+            break;
+          case 'auth/invalid-email':
+            errorMessage = 'Invalid email address.';
+            break;
+          case 'auth/user-disabled':
+            errorMessage = 'This account has been disabled.';
+            break;
+        }
+        
+        showMessage(errorMessage, 'error');
+        loginBtn.disabled = false;
+        loginBtn.textContent = 'Login';
+      }
+    });
+
+    // Forgot password functionality
+    document.getElementById('forgotPassword').addEventListener('click', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      
+      if (!email) {
+        showMessage('Please enter your email address first.', 'error');
+        return;
+      }
+      
+      try {
+        await auth.sendPasswordResetEmail(email);
+        showMessage('Password reset email sent! Check your inbox.', 'success');
+      } catch (error) {
+        showMessage('Failed to send reset email. Please check your email address.', 'error');
+      }
+    });
+
+    // Check if user is already logged in
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is already logged in, redirect to home
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</body>
+</html>
